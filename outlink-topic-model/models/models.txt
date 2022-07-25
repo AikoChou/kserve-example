@@ -1,0 +1,2 @@
+Current model binary can be found here:
+https://analytics.wikimedia.org/published/datasets/one-off/isaacj/articletopic/model_alloutlinks_202012.bin
