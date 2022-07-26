@@ -21,11 +21,7 @@ Run the following command to build the Docker image
 docker build -t SOME-DOCKER-TAG-THAT-YOU-LIKE -f Dockerfile .
 ```
 
-Docker provides the ability to package and run an application in an isolated environment. If you look at our Dockerfile, you will see we first specify a base image from the [Wikimedia Docker Registry](https://docker-registry.wikimedia.org/) so we make sure the application can run in our WMF environment.
-
-The rest of the steps in the Dockerfile are 1) copy the `model-server` directory to the container. 2) pip install the necessary dependencies. Finally, define an entry point for the kserve application to run the `model.py` script.
-
-After the building is finished, check the image is in your local environment
+After the building is finished, you may want to check if the image is in your local environment
 ```
 docker image ls
 ``` 
