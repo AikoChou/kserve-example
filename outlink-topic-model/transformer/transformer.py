@@ -50,7 +50,7 @@ async def get_outlinks(title: str, lang: str, limit=1000) -> Set:
         return outlink_qids
 
 
-class OutlinkTransformer(kserve.KFModel):
+class OutlinkTransformer(kserve.Model):
     def __init__(self, name: str, predictor_host: str):
         super().__init__(name)
         self.predictor_host = predictor_host
@@ -120,7 +120,7 @@ class OutlinkTransformer(kserve.KFModel):
         }
         return {"prediction": result}
 
-parser = argparse.ArgumentParser(parents=[kserve.kfserver.parser])
+parser = argparse.ArgumentParser(parents=[kserve.model_server.parser])
 parser.add_argument(
     "--model_name", help="The name that the model is served under.",
 )
@@ -134,5 +134,5 @@ if __name__ == "__main__":
     transformer = OutlinkTransformer(
         args.model_name, predictor_host=args.predictor_host
     )
-    kfserver = kserve.KFServer()
-    kfserver.start(models=[transformer])
+    kserver = kserve.ModelServer()
+    kserver.start(models=[transformer])
